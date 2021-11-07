@@ -3,6 +3,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render, HttpResponse, redirect
 from .models import ToDo
 from .models import ToMeet
+from .models import Habits
 # Create your views here.
 
 
@@ -27,3 +28,8 @@ def add_todo(request):
     todo.save()
     # print(text)
     return redirect(test)
+
+
+def habits(request):
+    habits_list = Habits.objects.all()
+    return render(request, "habits.html", {"habits_list": habits_list})

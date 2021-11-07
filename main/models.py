@@ -16,3 +16,11 @@ class ToMeet(models.Model):
     date_of_meeting = models.DateField()
     is_closed = models.BooleanField(default=False)
     is_favorite = models.BooleanField(default=False)
+
+
+class Habits(models.Model):
+    name = models.CharField(max_length=30)
+    done_for = models.BooleanField(default=False)
+    today = models.DateTimeField()
+    important = models.BooleanField(default=False)
+    comment = models.TextField()
