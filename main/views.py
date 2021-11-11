@@ -36,6 +36,20 @@ def delete_todo(request, id):
     return redirect(test)
 
 
+def mark_todo(request, id):
+    todo = ToDo.objects.get(id=id)
+    todo.is_favorite = True
+    todo.save()
+    return redirect(test)
+
+
+def unmark_todo(request, id):
+    todo = ToDo.objects.get(id=id)
+    todo.is_favorite = False
+    todo.save()
+    return redirect(test)
+
+
 def habits(request):
     habits_list = Habits.objects.all()
     return render(request, "habits.html", {"habits_list": habits_list})
