@@ -50,6 +50,13 @@ def unmark_todo(request, id):
     return redirect(test)
 
 
+def close_todo(request, id):
+    todo = ToDo.objects.get(id=id)
+    todo.is_closed = not todo.is_closed
+    todo.save()
+    return redirect(test)
+
+
 def habits(request):
     habits_list = Habits.objects.all()
     return render(request, "habits.html", {"habits_list": habits_list})
