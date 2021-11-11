@@ -30,6 +30,12 @@ def add_todo(request):
     return redirect(test)
 
 
+def delete_todo(request, id):
+    todo = ToDo.objects.get(id=id)
+    todo.delete()
+    return redirect(test)
+
+
 def habits(request):
     habits_list = Habits.objects.all()
     return render(request, "habits.html", {"habits_list": habits_list})
